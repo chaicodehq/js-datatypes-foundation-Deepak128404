@@ -10,7 +10,7 @@
  *   { name: "Priya", coach: "S3", seat: 15, status: "waitlisted" },
  *   ...
  * ]
- *
+ *  
  * Methods to explore: .find(), .findIndex(), .some(), .every(), .filter()
  *
  * Functions:
@@ -48,21 +48,36 @@
  *   areAllConfirmed(passengers)          // => true/false
  */
 export function findPassenger(passengers, name) {
-  // Your code here
+  if(!Array.isArray(passengers) || typeof name !== 'string') return undefined
+  return passengers.find((p) => {
+    return p.name.toLowerCase() === name.toLowerCase()
+  })
 }
 
 export function getPassengerIndex(passengers, name) {
-  // Your code here
+  if(!Array.isArray(passengers) || typeof name !== 'string') return -1
+else return passengers.findIndex((p) => {
+  return p.name.toLowerCase() === name.toLowerCase()
+})
 }
 
 export function isAnyWaitlisted(passengers) {
-  // Your code here
-}
+  if(!Array.isArray(passengers) || passengers.length === 0) return false
+  return passengers.some((p) => {
+    return p.status === "waitlisted"
+  })
+  }
 
 export function areAllConfirmed(passengers) {
-  // Your code here
+  if(!Array.isArray(passengers) || passengers.length === 0) return false
+  return passengers.every((p) => {
+    return p.status === "confirmed"
+  })
 }
 
 export function getWaitlistedPassengers(passengers) {
-  // Your code here
+  if(!Array.isArray(passengers)) return []
+  return passengers.filter((p) => {
+     return  p.status == "waitlisted"
+  })
 }
