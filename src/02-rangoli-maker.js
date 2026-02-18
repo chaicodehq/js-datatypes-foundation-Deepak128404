@@ -73,8 +73,6 @@ export function makeRangoliBorder(char, length) {
   if(typeof char !== "string") return ""
   if (length <= 0) return ""
   return  char.repeat(10).slice(0, length)
- 
-
 }
 
-console.log(repeatPattern('*', ""))
+// console.log(repeatPattern('*', ""))
