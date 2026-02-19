@@ -16,7 +16,6 @@
  *
  * Functions:
  *
- *   1. getFamilyNames(registry)
  *      - Object.keys() se saare ration card IDs nikalo
  *      - Agar registry object nahi hai ya null hai, return []
  *      - Example: getFamilyNames({"RC001":{...},"RC002":{...}}) => ["RC001", "RC002"]
@@ -53,21 +52,29 @@
  *   removeRationCard(registry, "RC001")    // => true
  */
 export function getFamilyNames(registry) {
-  // Your code here
+  if(registry === null || typeof registry !== 'object'|| Object.keys(registry).length === 0 || Array.isArray(registry)) return []
+  else  return Object.keys(registry)
 }
 
 export function getAllFamilies(registry) {
-  // Your code here
+  if(registry === null || typeof registry !== "object") return []
+  else return Object.values(registry)
 }
 
 export function getRationCardEntries(registry) {
-  // Your code here
+  if(registry === null || typeof registry !== 'object' || Object.keys(registry).length === 0) return []
+  else return Object.entries(registry) 
 }
 
 export function hasRationCard(registry, cardId) {
-  // Your code here
+  if(registry === null || typeof registry !== "object" || typeof cardId !== 'string') return false
+  else return registry.hasOwnProperty(cardId)
 }
 
 export function removeRationCard(registry, cardId) {
-  // Your code here
+  if(registry === null || typeof registry !== 'object' || typeof cardId !== 'string') return false
+  
+  if(registry.hasOwnProperty(cardId))return delete registry[cardId]
+  else return false
+
 }
