@@ -1,6 +1,6 @@
 /**
  * 📮 Dak Ghar Parcel Service - JSON & Type Conversion
- *
+ *  
  * Dak Ghar (Post Office) mein parcels ka data manage karna hai.
  * Kabhi JSON mein convert karna padta hai, kabhi JSON se wapas laana
  * padta hai, kabhi ek type se doosre mein. Type conversion ka journey!
@@ -52,21 +52,34 @@
  *   stringToChars("Dak")                  // => ["D", "a", "k"]
  */
 export function parcelToJSON(parcel) {
-  // Your code here
+  if(parcel === undefined) return ""
+  try {
+     return JSON.stringify(parcel)
+  } catch (error) {
+    return ""
+  }
 }
 
 export function jsonToParcel(jsonString) {
-  // Your code here
+  if(typeof jsonString !== 'string') return null
+  try {
+    return JSON.parse(jsonString)
+  } catch (error) {
+    return null
+  }
 }
 
 export function convertToString(value) {
-  // Your code here
+  return String(value)
 }
 
 export function convertToNumber(value) {
-  // Your code here
+  const result = Number(value)
+  if(isNaN(result)) return NaN
+  else return result
 }
 
 export function stringToChars(str) {
-  // Your code here
+  if(typeof str !== "string") return []
+  else return Array.from(str)
 }
